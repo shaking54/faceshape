@@ -1,0 +1,7 @@
+data/Contour/*
+data/FaceMeshHog/*
+data/FaceShape Dataset/*
+data/archive.zip
+data/FaceMesh
+
+.DS_Store
