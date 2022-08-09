@@ -3,5 +3,5 @@ data/FaceMeshHog/*
 data/FaceShape Dataset/*
 data/archive.zip
 data/FaceMesh
-
+model/*
 .DS_Store
