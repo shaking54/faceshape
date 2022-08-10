@@ -36,13 +36,13 @@ def meshExtractor(path, savepath, hist=False):
         if not shape.endswith('.ini'):
           shapepath = os.path.join(dirs, shape)
           for filename in os.listdir(shapepath):
-            # try:
+            try:
               file = os.path.join(shapepath, filename)
               p = savepath+phase+"/"+shape+"/"
               if not os.path.exists(p):
                 os.mkdir(p)
               spath = os.path.join(p, filename)
-              image = cv2.imread(file, 1)
+              image = cv2.imread(file)
               # Convert the BGR image to RGB before processing.
               results = face_mesh.process(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
               # Print and draw face mesh landmarks on the image.
@@ -118,10 +118,8 @@ def meshExtractor(path, savepath, hist=False):
 
                 #plt.imsave(spath, hog_image[int(0.9*cy_min):int(cy_max*1.05),int(0.9*cx_min):int(cx_max*1.05)])
                 cv2.imwrite(spath, hog_image_rescaled[int(0.9*cy_min):int(cy_max*1.05),int(0.9*cx_min):int(cx_max*1.05)])
-                
-              break
-            # except:
-            #   print(filename)
+            except:
+              print(filename)
 
 
 if __name__ == '__main__':

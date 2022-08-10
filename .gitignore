@@ -5,3 +5,4 @@ data/archive.zip
 data/FaceMesh
 model/*
 .DS_Store
+venv

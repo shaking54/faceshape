@@ -2,7 +2,7 @@ import cv2
 import dlib
 import os
 import re
-
+# import argparse
 import numpy as np
 
 def contourExtractor(modelpath, datapath, result):
@@ -48,6 +48,7 @@ def contourExtractor(modelpath, datapath, result):
 
 if __name__ == '__main__':
   modelpath = "model/face_contour_17.dat"
-  datapath = "data/FaceShape Dataset/training_set"
-  result = "data/Contour/training"
-  contourExtractor(modelpath, datapath, result)
+  datapath = ["data/FaceShape Dataset/training_set", "data/FaceShape Dataset/testing_set"]
+  result = ["data/Contour/training_set", "data/Contour/testing_set"]
+  for i in range(2):
+    contourExtractor(modelpath, datapath[i], result[i])
