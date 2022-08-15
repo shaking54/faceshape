@@ -6,3 +6,4 @@ data/FaceMesh
 model/*
 .DS_Store
 venv
+__pycache__/

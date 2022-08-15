@@ -65,8 +65,6 @@ def load_data(path):
   train_path = []
   label = {"Heart": 0, "Oblong": 1, "Oval": 2, "Round": 3, "Square": 4}
 
-  mp_drawing = mp.solutions.drawing_utils
-  mp_drawing_styles = mp.solutions.drawing_styles
   mp_face_mesh = mp.solutions.face_mesh
 
   face_mesh = mp_face_mesh.FaceMesh(
@@ -100,3 +98,5 @@ def load_data(path):
 if __name__ == '__main__':
     X_train, y_train,train_path = load_data('data/FaceShape Dataset/training_set')
     X_test, y_test, test_path = load_data('data/FaceShape Dataset/testing_set')
+
+    print(len(X_train) + len(X_test))

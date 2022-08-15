@@ -47,8 +47,8 @@ def DeepNetworks(args):
 
 def VisionTransformer(args):
 
-    X_train, y_train,train_path = load_data('/data/FaceShape Dataset/training_set')
-    X_test, y_test, test_path = load_data('/data/FaceShape Dataset/testing_set')
+    X_train, y_train,train_path = load_data('data/FaceShape Dataset/training_set')
+    X_test, y_test, test_path = load_data('data/FaceShape Dataset/testing_set')
 
     train_transforms = T.Compose([
         T.Resize((224,224)),
@@ -68,8 +68,8 @@ def VisionTransformer(args):
                                         
     ])
 
-    train = CustomImageDataset(train_path, y_train, X_train, transform=train_transforms) 
-    test = CustomImageDataset(test_path, y_test, X_test, transform=test_transforms) 
+    train = CustomImageDataset(X_train, y_train, train_path, transform=train_transforms) 
+    test = CustomImageDataset(X_test, y_test, test_path, transform=test_transforms) 
 
     train_dataloader = DataLoader(train, batch_size=16, shuffle=True)
     test_dataloader = DataLoader(test, batch_size=16, shuffle=True)
@@ -79,12 +79,12 @@ def VisionTransformer(args):
                 "testing_set": test_dataloader
             }
     num_epochs = args.epochs
-    model_ft = Network()
+    model_ft = Network(args.backbone)
     criterion = nn.CrossEntropyLoss()
     optimizer_ft = optim.SGD(model_ft.parameters(), lr=0.001, momentum=0.9)
     model_ft.to(device)
     
-    model_ft, hist = train_model(model_ft, dataloaders, criterion, optimizer_ft, num_epochs=num_epochs)
+    model_ft, hist = train_model_transformers(model_ft, dataloaders, criterion, optimizer_ft, num_epochs=num_epochs)
 
 
 if __name__ == '__main__':
@@ -92,6 +92,8 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--datadir', default="data/FaceShape Dataset", 
                         help='data path')
     parser.add_argument('-m','--model_name', default="resnet",
+                        help='model name')
+    parser.add_argument('-b','--backbone', default="resnet",
                         help='model name')
     parser.add_argument('-e','--epochs', default=10,
                         help='number of epochs training')
