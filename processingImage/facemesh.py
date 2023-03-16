@@ -124,6 +124,8 @@ def meshExtractor(path, savepath, hist=False):
 
 if __name__ == '__main__':
 
-    path = 'data/FaceShape Dataset/'
+    path = 'data/FaceShape Dataset/'    
     savepath = 'data/FaceMeshHog/'
+    if not os.path.isdir(savepath):
+      os.mkdir(savepath)
     meshExtractor(path, savepath, hist=True)

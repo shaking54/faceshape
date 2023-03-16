@@ -4,3 +4,5 @@ mediapipe
 scikit-image==0.18.3
 gdown
 transformers
+torch
+torchvision

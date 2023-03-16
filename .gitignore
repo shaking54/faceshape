@@ -1,9 +1,11 @@
 data/Contour/*
 data/FaceMeshHog/*
 data/FaceShape Dataset/*
-data/archive.zip
+data/dataset.zip
 data/FaceMesh
 model/*
 .DS_Store
 venv
 __pycache__/
+networks/__pycache__
+processingImage/__pycache__
