@@ -3,6 +3,7 @@ import mediapipe as mp
 import numpy as np
 import os
 import sys
+import tqdm
 
 import matplotlib.pyplot as plt
 
@@ -28,14 +29,16 @@ def meshExtractor(path, savepath, hist=False):
   if not os.path.exists(savepath):
     os.mkdir(savepath)
   for phase in phases:
+    print(phase)
     dirs = os.path.join(path, phase)
     if not phase.endswith('.ini'):
       if not os.path.exists(savepath+phase):
         os.mkdir(savepath+phase)
       for shape in os.listdir(dirs):
+        print(shape)
         if not shape.endswith('.ini'):
           shapepath = os.path.join(dirs, shape)
-          for filename in os.listdir(shapepath):
+          for filename in tqdm.tqdm(os.listdir(shapepath)):
             try:
               file = os.path.join(shapepath, filename)
               p = savepath+phase+"/"+shape+"/"
@@ -118,6 +121,7 @@ def meshExtractor(path, savepath, hist=False):
 
                 #plt.imsave(spath, hog_image[int(0.9*cy_min):int(cy_max*1.05),int(0.9*cx_min):int(cx_max*1.05)])
                 cv2.imwrite(spath, hog_image_rescaled[int(0.9*cy_min):int(cy_max*1.05),int(0.9*cx_min):int(cx_max*1.05)])
+            
             except:
               print(filename)
 
