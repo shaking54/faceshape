@@ -24,7 +24,7 @@ Install using conda:
 
 Get Dataset:
 
-`./dataset.sh`
+`bash dataset.sh`
 
 Process Dataset:
     - Contour image: `python countour.py`
