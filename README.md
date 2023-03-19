@@ -1,14 +1,14 @@
 # faceshape
 
-model: contain pre-trained of face_contour and 68 points landmarks
+### model: contain pre-trained of face_contour and 68 points landmarks
 
-networks: 
+### networks: 
 
           + models.py contain deep neural network such as ResNet, InceptionNet, ...
 
           + ViT.py contain transformers network
 
-processingImage: 
+### processingImage: 
           
           + contour.py get image contour from dataset
                  
@@ -17,11 +17,11 @@ processingImage:
           + facemesh.py get face mesh image from dataset.
 
 
-Requirement:
+### Requirement:
 
 `python=3.7`
 
-Install using conda:
+### Install using conda:
 
 `conda create -n faceshape python=3.7`
 
@@ -29,16 +29,16 @@ Install using conda:
 
 `pip install -r requirement.txt`
 
-Get Dataset:
+### Get Dataset:
 
 `bash dataset.sh`
 
-Process Dataset:
+### Process Dataset:
     - Contour image: `python countour.py`
     
     - FaceMesh image: `python facemesh.py`
 
-Training:
+### Training:
     - Deep neural network: `python main.py -m resnet -b resnet -e 10`
     
     - Transformers: `python main.py -m transformers -b resnet -e 10` 
